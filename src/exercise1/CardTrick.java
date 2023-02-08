@@ -17,45 +17,50 @@ public class CardTrick {
     public static void main(String[] args) {
         
         Card[] hand = new Card[7];
-        Scanner scan = new Scanner(System.in);
-        Random generator =new Random();
-        generator.setSeed(System.currentTimeMillis());
-        System.out.println("The cards in the magic hand are: ");
+        
         for (int i = 0; i < hand.length; i++) {
             Card card = new Card();
+               
+        hand[0]= new Card();
+        hand[0].setValue(1);
+        hand[0].setSuit("Hearts");        
+        hand[1]= new Card();
+        hand[1].setValue(2);
+        hand[1].setSuit("Clubs");        
+        hand[2]= new Card();
+        hand[2].setValue(3);
+        hand[2].setSuit("Diomonds");
+        hand[3]= new Card();
+        hand[3].setValue(4);
+        hand[3].setSuit("Spades");
+        hand[4]= new Card();
+        hand[4].setValue(5);
+        hand[4].setSuit("Clubs");
+        hand[5]= new Card();
+        hand[5].setValue(12);
+        hand[5].setSuit("Hearts");
+        hand[6]= new Card();
+        hand[6].setValue(11);
+        hand[6].setSuit("Hearts");
+       
+        Scanner input = new Scanner(System.in);
+        int userValue =input.nextInt();
+        String userSuit= input.nextLine();
+            for (Card hand1 : hand) {
+                if (hand1.getValue() == userValue && hand1.getSuit().equals(userSuit)) {
+                    printInfo();
+                } //end of if
+            } //end of for
             //card.setValue(insert call to random number generator here)
-            card.setValue(generator.nextInt(13)+1);
             // 
             //card.setSuit(Card.SUITS[insert call to random number between 0-3 here])
-            card.setSuit(Card.SUITS[generator.nextInt(4)]);
-            hand[i]=card;
-            System.out.println(card);
             // Hint: You can use Random -> random.nextInt(n) to get a random number between 0 and n-1 (inclusive)
             //       Don't worry about duplicates at this point
         }
         
-           /*  System.out.print("Enter card value: ");
-        int val = scan.nextInt();
-        System.out.print("Enter suit: ");
-        String suit = scan.next();
-        Card key = new Card();
-        key.setValue(val);
-        key.setSuit(suit);  */
-        // hard-coded answer for part 6 and 7
-        Card key = new Card();
-        key.setValue(11);
-        key.setSuit("Hearts");
-        boolean found = false;
-        System.out.println("Searching for: " + key);
-        for (int i = 0; i < hand.length; i++) {
-            if ((hand[i].getValue() == key.getValue()) && hand[i].getSuit().equalsIgnoreCase(key.getSuit())) {
-                System.out.println("Card is found in magic hand at index " + (i+1));
-                found = true;
-                break;
-            }
-        }
-        if (!found)
-            System.out.println("Card is not found in magic hand.");
+        
+        
+      
     
 
         // insert code to ask the user for Card value and suit, create their card
